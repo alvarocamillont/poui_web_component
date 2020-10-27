@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod && cat dist/angular-web-component/runtime*.js dist/angular-web-component/polyfills*.js dist/angular-web-component/main*.js > example/info-box.js && cp dist/angular-web-component/styles.*.css example/info-box.css",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
