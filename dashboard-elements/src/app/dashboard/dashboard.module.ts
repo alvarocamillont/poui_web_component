@@ -7,5 +7,6 @@ import { DashboardTileComponent } from './dashboard-tile/dashboard-tile.componen
 @NgModule({
   declarations: [DashboardComponent, DashboardTileComponent],
   imports: [CommonModule, SharedModule],
+  exports: [DashboardComponent],
 })
 export class DashboardModule {}
