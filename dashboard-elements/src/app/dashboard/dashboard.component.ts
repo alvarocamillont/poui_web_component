@@ -12,9 +12,7 @@ import { ExternalDashboardTileService } from './external-dashboard-tile.service'
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(
-    private externalService: ExternalDashboardTileService
-  ) {}
+  constructor(private externalService: ExternalDashboardTileService) {}
 
   getData(): [number, number, number] {
     return [
@@ -31,6 +29,7 @@ export class DashboardComponent implements OnInit {
   addExternal(): void {
     this.externalService.load();
     this.add('external-dashboard-tile');
+    //this.add('x-dropdown');
   }
 
   add(tileKind: string): void {

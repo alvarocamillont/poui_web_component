@@ -13,8 +13,10 @@ export class ExternalDashboardTileService {
       return;
     }
     const script = document.createElement('script');
-    script.src = 'assets/external-dashboard-tile.bundle.js';
+    //script.src = 'assets/xcomp/index.js';
+    script.src = 'assets/dashboard/external-dashboard-tile.bundle.js';
     document.body.appendChild(script);
     this.loaded = true;
   }
 }
+
