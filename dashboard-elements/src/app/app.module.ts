@@ -3,7 +3,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PoModule } from '@po-ui/ng-components';
 import { RouterModule } from '@angular/router';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
