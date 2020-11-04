@@ -7,9 +7,9 @@ import { PoChartType, PoDonutChartSeries } from '@po-ui/ng-components';
   styleUrls: ['./dashboard-tile.component.css'],
 })
 export class DashboardTileComponent implements OnInit {
-  @Input() a: number;
-  @Input() b: number;
-  @Input() c: number;
+  @Input() a: string;
+  @Input() b: string;
+  @Input() c: string;
 
   serie: Array<PoDonutChartSeries>;
 
@@ -19,9 +19,10 @@ export class DashboardTileComponent implements OnInit {
 
   ngOnInit(): void {
     this.serie = [
-      { category: 'a', value: this.a },
-      { category: 'b', value: this.b },
-      { category: 'c', value: this.c },
+      { category: 'a', value: parseInt(this.a) },
+      { category: 'b', value: parseInt(this.b) },
+      { category: 'c', value: parseInt(this.c) },
     ];
+    console.log(this.serie);
   }
 }

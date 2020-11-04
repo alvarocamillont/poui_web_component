@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  OnInit,
+  ViewContainerRef,
+} from '@angular/core';
 import { ExternalDashboardTileService } from './external-dashboard-tile.service';
-import { LazyDashboardTileService } from './lazy-dashboard-tile.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +13,6 @@ import { LazyDashboardTileService } from './lazy-dashboard-tile.service';
 })
 export class DashboardComponent implements OnInit {
   constructor(
-    private lazyService: LazyDashboardTileService,
     private externalService: ExternalDashboardTileService
   ) {}
 
@@ -25,12 +28,6 @@ export class DashboardComponent implements OnInit {
     this.add('dashboard-tile');
   }
 
-  addLazy(): void {
-    this.lazyService.load().then((_) => {
-      this.add('lazy-dashboard-tile');
-    });
-  }
-
   addExternal(): void {
     this.externalService.load();
     this.add('external-dashboard-tile');
@@ -38,9 +35,10 @@ export class DashboardComponent implements OnInit {
 
   add(tileKind: string): void {
     const data = this.getData();
+    console.log(data);
 
     const tile = document.createElement(tileKind);
-    tile.setAttribute('class', 'col-lg-4 col-md-3 col-sm-2');
+    tile.setAttribute('class', 'po-md-4');
     tile.setAttribute('a', '' + data[0]);
     tile.setAttribute('b', '' + data[1]);
     tile.setAttribute('c', '' + data[2]);
