@@ -14,37 +14,88 @@ import { ExternalDashboardTileService } from './external-dashboard-tile.service'
 export class DashboardComponent implements OnInit {
   constructor(private externalService: ExternalDashboardTileService) {}
 
-  getData(): [number, number, number] {
+  open = false;
+
+  toggle(event) {
+    console.log(event);
+    this.open = event.detail;
+  }
+
+  ngOnInit(): void {
+    this.externalService.load('x-dropdown').subscribe(() => {
+      this.add(
+        'x-dropdown',
+        'content2',
+        {
+          title: 'Olá componente dinâmico',
+        },
+        'po-md-4',
+        { show: this.toggle.bind(this) },
+        'ola!!!'
+      );
+    });
+  }
+
+  getData(): [string, string, string] {
     return [
-      Math.round(Math.random() * 100),
-      Math.round(Math.random() * 100),
-      Math.round(Math.random() * 100),
+      '' + Math.round(Math.random() * 100),
+      '' + Math.round(Math.random() * 100),
+      '' + Math.round(Math.random() * 100),
     ];
   }
 
   addDefault(): void {
-    this.add('dashboard-tile');
+    this.add('dashboard-tile', 'content', this.getPropData(), 'po-md-4');
   }
 
   addExternal(): void {
-    this.externalService.load();
-    this.add('external-dashboard-tile');
-    //this.add('x-dropdown');
+    this.externalService.load('external-dashboard-tile').subscribe(() => {
+      this.add(
+        'external-dashboard-tile',
+        'content',
+        this.getPropData(),
+        'po-md-4 po-mt-1'
+      );
+    });
   }
 
-  add(tileKind: string): void {
-    const data = this.getData();
-    console.log(data);
+  getPropData() {
+    const [a, b, c] = this.getData();
+    return { a, b, c };
+  }
 
+  add(
+    tileKind: string,
+    element: string,
+    props?: { [key: string]: string },
+    classStyle?: string,
+    events?: { [key: string]: (event: any) => void },
+    slotText?: string
+  ): void {
     const tile = document.createElement(tileKind);
-    tile.setAttribute('class', 'po-md-4');
-    tile.setAttribute('a', '' + data[0]);
-    tile.setAttribute('b', '' + data[1]);
-    tile.setAttribute('c', '' + data[2]);
 
-    const content = document.getElementById('content');
+    if (props) {
+      Object.keys(props).forEach((prop) => {
+        tile.setAttribute(prop, props[prop]);
+      });
+    }
+
+    if (events) {
+      Object.keys(events).forEach((event) => {
+        tile.shadowRoot.addEventListener(event, events[event]);
+        console.log(tile.shadowRoot);
+      });
+    }
+
+    if (classStyle) {
+      tile.setAttribute('class', classStyle);
+    }
+
+    if (slotText) {
+      tile.slot = slotText;
+    }
+
+    const content = document.getElementById(element);
     content.appendChild(tile);
   }
-
-  ngOnInit(): void {}
 }

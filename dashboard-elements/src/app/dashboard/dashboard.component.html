@@ -1,4 +1,15 @@
-<div class="po-row">
+<div class="po-row po-mt-1">
+  <p>
+    {{ open ? "open" : "closed" }}
+  </p>
+
+  <div class="po-row po-mt-1" id="content2"></div>
+  <!-- <x-dropdown title="myTitle" (show)="toggle($event)">
+    Hello from Web Component in Angular!
+  </x-dropdown> -->
+</div>
+
+<div class="po-row po-mt-1">
   <po-button class="po-md-4" p-label="Adiciona padrão" (p-click)="addDefault()">
   </po-button>
   <po-button

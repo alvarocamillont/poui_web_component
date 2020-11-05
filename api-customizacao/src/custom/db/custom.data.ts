@@ -1,13 +1,14 @@
 import { Customs } from '../custom.interface';
 import { externalDashboardTile } from './dashtile.data';
+import { xcomp } from './xcomp.data';
 
 export const customs: Customs = [
   {
-    name: 'external-dashboard-tile',
+    component: 'external-dashboard-tile',
     src: externalDashboardTile,
   },
   {
-    name: 'xcomp',
-    src: externalDashboardTile,
+    component: 'x-dropdown',
+    src: xcomp,
   },
 ];

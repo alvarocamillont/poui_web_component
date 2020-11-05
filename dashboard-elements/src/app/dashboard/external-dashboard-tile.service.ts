@@ -1,22 +1,34 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Custom, Customs } from './custom.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExternalDashboardTileService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  loaded = false;
+  loaded: Customs = [];
 
-  load(): void {
-    if (this.loaded) {
-      return;
+  load(component: string) {
+    if (this.loaded.find((custom) => custom.component === component)) {
+      return of(true);
     }
-    const script = document.createElement('script');
-    //script.src = 'assets/xcomp/index.js';
-    script.src = 'assets/dashboard/external-dashboard-tile.bundle.js';
-    document.body.appendChild(script);
-    this.loaded = true;
+
+    return this.http
+      .get<Custom>(`http://localhost:3000/custom/${component}`)
+      .pipe(
+        map((custom) => ({ ...custom, src: atob(custom.src) })),
+        map((custom) => {
+          const { src, ...customNoSrc } = custom;
+          this.loaded.push(customNoSrc);
+          const script = document.createElement('script');
+          script.text = src;
+          document.body.appendChild(script);
+          return true;
+        })
+      );
   }
 }
-

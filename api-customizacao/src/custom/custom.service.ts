@@ -6,7 +6,7 @@ import { customs } from './db/custom.data';
 export class CustomService {
   customs: Customs = customs;
 
-  getCustom(name: string) {
-    return this.customs.find(custom => custom.name === name);
+  getCustom(component: string) {
+    return this.customs.find(custom => custom.component === component);
   }
 }

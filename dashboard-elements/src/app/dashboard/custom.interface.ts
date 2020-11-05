@@ -1,8 +1,7 @@
-import { type } from 'os';
-
 export interface Custom {
-  component: string;
-  src: string;
+  component?: string;
+  src?: string;
+  load?: boolean;
 }
 
 export type Customs = Array<Custom>;

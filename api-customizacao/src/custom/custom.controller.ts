@@ -10,9 +10,9 @@ export class CustomController {
   constructor(private customService: CustomService) {}
 
   @ApiResponse({ status: 200, type: CustomDto })
-  @ApiParam({ name: 'name' })
-  @Get(':name')
-  getCustom(@Param() params: { name: string }): Custom {
-    return this.customService.getCustom(params.name);
+  @ApiParam({ name: 'component' })
+  @Get(':component')
+  getCustom(@Param() params: { component: string }): Custom {
+    return this.customService.getCustom(params.component);
   }
 }
