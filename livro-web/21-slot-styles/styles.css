@@ -1,0 +1,6 @@
+@import '/styles.css'; /* base layout/font styles */
+
+/* ::slotted has low specificity, a simple selector overrides at the root */
+/* p {
+  color: orange;
+} */

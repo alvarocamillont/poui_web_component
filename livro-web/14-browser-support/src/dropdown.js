@@ -33,13 +33,13 @@ export class XDropdown extends HTMLElement {
     this.show = false;
 
     this.attachShadow({ mode: 'open' });
-    this.root.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.buttonElement = this.root.querySelector('button');
+    this.buttonElement = this.shadowRoot.querySelector('button');
     this.buttonElement.innerText = this.title;
     this.buttonElement.addEventListener('click', () => this.toggle());
 
-    this.contentElement = this.root.querySelector('div');
+    this.contentElement = this.shadowRoot.querySelector('div');
     this.contentElement.style.display = 'none';
   }
 

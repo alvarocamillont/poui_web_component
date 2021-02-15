@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Web Component Essentials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./styles.css" rel="stylesheet" />
+  <style>
+    /* one-component {
+      --color: purple;
+    } */
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Example 21 Slot Styles</h1>
+    <a href="/">Back to examples</a>
+  </header>
+
+  <main>
+    <p>Important to note that ::slotted can only select top-level children, it can't do descendant selectors.</p>
+    <p>The ::slotted selector has low specificity, any root level defined selector has a higher specificity.</p>
+    <hr />
+    <p>I am a paragraph in the root.</p>
+
+    <one-component>
+      <p>Root Content should be black</p>
+    </one-component>
+
+    <two-component>
+      <p>Root Content should be black</p>
+    </two-component>
+
+    <three-component>
+      <p>Root Content should be black</p>
+    </three-component>
+
+    <one-component>
+      <two-component>
+        <three-component>
+          <p>Root Content should be black</p>
+        </three-component>
+      </two-component>
+    </one-component>
+
+
+    <four-component>
+      <p>Root Content should be black</p>
+    </four-component>
+  </main>
+
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>

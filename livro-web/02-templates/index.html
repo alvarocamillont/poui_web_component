@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Web Component Essentials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <h1>Example 2 Templates</h1>
+    <a href="/">Back to examples</a>
+  </header>
+  <main>
+    <x-component></x-component>
+
+    <template>
+      <h1>Not going to render!</h1>
+      <script>
+        alert('not going to happen!');
+      </script>
+    </template>
+  </main>
+
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>

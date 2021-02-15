@@ -1,0 +1,22 @@
+{
+  "name": "15-lit-html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && webpack --mode production"
+  },
+  "author": "Cory Rylan",
+  "license": "",
+  "dependencies": {
+    "lit-element": "^2.0.1",
+    "rimraf": "^2.6.3"
+  },
+  "devDependencies": {
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3"
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Web Component Essentials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/styles.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: blue;
+      --heading-size: 18px;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: var(--heading-size);
+    }
+
+    p {
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Example 9 CSS Custom Properties</h1>
+    <a href="/">Back to examples</a>
+  </header>
+
+  <main>
+    <h2>Heading styled with a CSS Custom Property</h2>
+    <p>
+      Paragraph styled with a CSS Custom Property
+    </p>
+
+    <button>Toggle Color</button>
+  </main>
+
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>

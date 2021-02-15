@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Web Component Essentials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <h1>Example 3 Content Slot</h1>
+    <a href="/">Back to examples</a>
+  </header>
+
+  <main>
+    <x-component>
+      Hello World using content slot!
+    </x-component>
+
+    <br><br>
+
+    <x-detail-card>
+      <span slot="title">Hello!</span>
+      from multi slot component
+    </x-detail-card>
+  </main>
+
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>

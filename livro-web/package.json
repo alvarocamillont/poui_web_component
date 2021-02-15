@@ -1,0 +1,14 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "To run examples run a local server at `index.html`. You can run `npm install -g lite-server` then in this directory run `lite-server`. For best results run in Chrome or Firefox nightly.",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server",
+    "clean": "find . -name 'node_modules' -exec rm -rf '{}' +"
+  },
+  "author": "Cory Rylan",
+  "dependencies": {
+    "lite-server": "^2.4.0"
+  }
+}

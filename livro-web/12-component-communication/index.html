@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Web Component Essentials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/styles.css" rel="stylesheet" />
+  <style>
+    .characters {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      grid-gap: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h2>Galactic Characters</h2>
+    <div class="characters">
+      <x-character-list></x-character-list>
+      <x-character-detail></x-character-detail>
+    </div>
+  </main>
+
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>
