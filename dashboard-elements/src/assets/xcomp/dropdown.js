@@ -1,4 +1,4 @@
-const template = document.createElement('template');
+const template = document.createElement("template");
 template.innerHTML = `
   <style>
     div {
@@ -15,7 +15,7 @@ template.innerHTML = `
 
 export class XDropdown extends HTMLElement {
   static get observedAttributes() {
-    return ['title'];
+    return ["title"];
   }
 
   get title() {
@@ -29,31 +29,31 @@ export class XDropdown extends HTMLElement {
 
   constructor() {
     super();
-    this._title = 'dropdown';
+    this._title = "dropdown";
     this.show = false;
 
-    this.attachShadow({ mode: 'open' });
+    this.root = this.attachShadow({ mode: "open" });
     this.root.appendChild(template.content.cloneNode(true));
 
-    this.buttonElement = this.root.querySelector('button');
+    this.buttonElement = this.root.querySelector("button");
     this.buttonElement.innerText = this.title;
-    this.buttonElement.addEventListener('click', () => this.toggle());
+    this.buttonElement.addEventListener("click", () => this.toggle());
 
-    this.contentElement = this.root.querySelector('div');
-    this.contentElement.style.display = 'none';
+    this.contentElement = this.root.querySelector("div");
+    this.contentElement.style.display = "none";
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {
-    if (attrName === 'title' && this.buttonElement) {
+    if (attrName === "title" && this.buttonElement) {
       this.title = newValue;
     }
   }
 
   toggle() {
     this.show = !this.show;
-    this.contentElement.style.display = this.show ? 'block' : 'none';
-    this.dispatchEvent(new CustomEvent('show', { detail: this.show }));
+    this.contentElement.style.display = this.show ? "block" : "none";
+    this.dispatchEvent(new CustomEvent("show", { detail: this.show }));
   }
 }
 
-customElements.define('x-dropdown', XDropdown);
+customElements.define("x-dropdown", XDropdown);
