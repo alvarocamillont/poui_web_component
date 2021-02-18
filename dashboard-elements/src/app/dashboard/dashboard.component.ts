@@ -18,20 +18,20 @@ export class DashboardComponent implements OnInit {
 
   toggle(event) {
     console.log(event);
-    this.open = event.detail;
+    this.open = event.detail.show;
   }
 
   ngOnInit(): void {
-    this.externalService.load('x-dropdown').subscribe(() => {
+    this.externalService.load('pods-button').subscribe(() => {
       this.add(
-        'x-dropdown',
+        'pods-button',
         'content2',
         {
-          title: 'Olá componente dinâmico',
+          label: 'Botão de Teste',
         },
         'po-md-4',
-        { show: this.toggle.bind(this) },
-        'ola!!!'
+        { clickButton: this.toggle.bind(this) },
+        'Teste'
       );
     });
   }
@@ -82,8 +82,7 @@ export class DashboardComponent implements OnInit {
 
     if (events) {
       Object.keys(events).forEach((event) => {
-        tile.shadowRoot.addEventListener(event, events[event]);
-        console.log(tile.shadowRoot);
+        tile.addEventListener(event, events[event]);
       });
     }
 
@@ -92,10 +91,12 @@ export class DashboardComponent implements OnInit {
     }
 
     if (slotText) {
-      tile.slot = slotText;
+      tile.innerHTML = slotText;
     }
 
     const content = document.getElementById(element);
     content.appendChild(tile);
+
+    console.log(tile);
   }
 }
