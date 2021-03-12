@@ -7,6 +7,20 @@
 </div>
 
 <div class="po-row po-mt-1">
+  <po-radio-group
+    class="po-lg-4"
+    name="personType"
+    [(ngModel)]="personType"
+    p-label="Tipo de Pessoa"
+    [p-options]="personOptions"
+    (p-change)="changePerson($event)"
+  >
+  </po-radio-group>
+
+  <div class="po-row po-mt-1" id="content3"></div>
+</div>
+
+<div class="po-row po-mt-1">
   <po-button class="po-md-4" p-label="Adiciona padrão" (p-click)="addDefault()">
   </po-button>
   <po-button

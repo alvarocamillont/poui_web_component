@@ -4,10 +4,11 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardTileComponent } from './dashboard-tile/dashboard-tile.component';
 import { createCustomElement } from '@angular/elements';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DashboardComponent, DashboardTileComponent],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule,FormsModule],
   exports: [DashboardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -4,6 +4,7 @@ import {
   OnInit,
   ViewContainerRef,
 } from '@angular/core';
+import { PoRadioGroupOption } from '@po-ui/ng-components';
 import { ExternalDashboardTileService } from './external-dashboard-tile.service';
 
 @Component({
@@ -15,6 +16,17 @@ export class DashboardComponent implements OnInit {
   constructor(private externalService: ExternalDashboardTileService) {}
 
   open = false;
+  personType: string = 'CPF';
+  readonly personOptions: Array<PoRadioGroupOption> = [
+    { label: 'Física', value: 'CPF' },
+    { label: 'Jurídica', value: 'CNPJ' },
+  ];
+
+  customComponents = [];
+
+  changePerson(personType) {
+    this.notifyAll({ personType });
+  }
 
   toggle(event) {
     console.log(event);
@@ -33,6 +45,19 @@ export class DashboardComponent implements OnInit {
         { clickButton: this.toggle.bind(this) },
         'Teste'
       );
+    });
+
+    this.externalService.load('pods-input-cnpj').subscribe(() => {
+      const content = this.add(
+        'pods-input-cnpj',
+        'content3',
+        {},
+        'po-md-4',
+        {},
+        'Teste'
+      );
+
+      this.customComponents.push(content);
     });
   }
 
@@ -71,7 +96,7 @@ export class DashboardComponent implements OnInit {
     classStyle?: string,
     events?: { [key: string]: (event: any) => void },
     slotText?: string
-  ): void {
+  ): any {
     const tile = document.createElement(tileKind);
 
     if (props) {
@@ -97,6 +122,14 @@ export class DashboardComponent implements OnInit {
     const content = document.getElementById(element);
     content.appendChild(tile);
 
-    console.log(tile);
+    return tile;
+  }
+
+  notifyAll(props) {
+    this.customComponents.forEach((component) => {
+      console.log(component);
+
+      component.notify(props);
+    });
   }
 }
