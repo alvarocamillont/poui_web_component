@@ -17,10 +17,17 @@ export class DashboardComponent implements OnInit {
 
   open = false;
   personType: string = 'CPF';
+  cnpj = 'aaa';
+
   readonly personOptions: Array<PoRadioGroupOption> = [
-    { label: 'Física', value: 'CPF' },
     { label: 'Jurídica', value: 'CNPJ' },
+    { label: 'Física', value: 'CPF' },
   ];
+
+  setCNPJ(event) {
+    const { value } = event.detail;
+    this.cnpj = value;
+  }
 
   customComponents = [];
 
@@ -53,7 +60,7 @@ export class DashboardComponent implements OnInit {
         'content3',
         {},
         'po-md-4',
-        {},
+        { emitValue: this.setCNPJ.bind(this) },
         'Teste'
       );
 
@@ -127,8 +134,6 @@ export class DashboardComponent implements OnInit {
 
   notifyAll(props) {
     this.customComponents.forEach((component) => {
-      console.log(component);
-
       component.notify(props);
     });
   }
